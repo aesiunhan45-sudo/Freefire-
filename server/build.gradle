@@ -1,0 +1,23 @@
+plugins { id 'application' }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+application {
+    mainClass = 'com.demmaquai.server.GameServer'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation "com.badlogicgames.gdx:gdx:1.12.0"
+    implementation "io.netty:netty-all:4.1.100.Final"
+    implementation "com.esotericsoftware:kryo:5.5.0"
+}
+
+task fatJar(type: Jar) {
+    manifest { attributes 'Main-Class': 'com.demmaquai.server.GameServer' }
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
