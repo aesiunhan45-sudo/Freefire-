@@ -62,13 +62,15 @@ public class Game3D extends ApplicationAdapter {
         me.transform.setToTranslation(playerPos);
         instances.add(me);
 
-        // Bot placeholder
-        ModelInstance bot = new ModelInstance(playerModel);
+        Model botModel = mb.createBox(
+            1f, 1.8f, 1f,
+            new Material(ColorAttribute.createDiffuse(new Color(0.9f, 0.2f, 0.2f, 1f))),
+            VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal
+        );
+        ModelInstance bot = new ModelInstance(botModel);
         bot.transform.setToTranslation(5, 0, 0);
-        bot.materials.get(0).set(ColorAttribute.createDiffuse(new Color(0.9f, 0.2f, 0.2f, 1f)));
         instances.add(bot);
 
-        Gdx.input.setInputProcessor(null);
         System.out.println("[Game3D] server=" + serverAddress);
     }
 

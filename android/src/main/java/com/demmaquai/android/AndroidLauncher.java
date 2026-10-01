@@ -12,7 +12,7 @@ public class AndroidLauncher extends AndroidApplication {
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
         cfg.useAccelerometer = false;
         cfg.useCompass = false;
-        cfg.useGL30 = false;
+        cfg.useGL30 = true;
         initialize(new Game3D("10.0.2.2"), cfg);
     }
 }
