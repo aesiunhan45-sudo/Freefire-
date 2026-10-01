@@ -101,7 +101,7 @@ public class Game3D extends ApplicationAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.E)) camYaw -= 60 * dt;
 
         if (moveInput.len() > 0) {
-            moveInput.nor().rot(Vector3.Y, camYaw);
+            moveInput.nor().rotateRad(Vector3.Y, (float) Math.toRadians(camYaw));
             playerPos.mulAdd(moveInput, 5f * dt);
         }
 
